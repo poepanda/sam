@@ -2,12 +2,9 @@ language: node_js
 node_js:
 - '8'
 deploy:
-  provider: gcs
-  access_key_id: GOOG4Y5GH4T5IDB4VRWT
-  secret_access_key:
-    secure: FytXKVu0aqQBng6Tc2jXNRsMCoq+bmvqfXzALu69+8f+BMaEVknfeOVxVLHtT7e5ZYQhte1W+Z3Ow+K0vKoeULp+9hdGlCWAzbo4oHGkpzhsYt2N605/HYEJSYT8Qly1VNhojEqg2tJ/ZklQyynnf5tspVb0xqqM/8uqjy7gFONeMYDixiFUvAXh/d13+y5G5njnJDg6lmTR3dw1WsRCInSiNXwKPPLKRSBh7AKW5IrF2PhSeE52rFw6nBpqSQO9TnfqizHmymLMFBosebSRIhhdHGKYt5sjnX9UDOVjP8wN2oJ2/I0djZuZPlnqcSb5P/TggjYzdVCK7NqDRI4/EXCdKBZiyuqnp8BGTVCf3bn4Tjpx4lVVdRAEB7C0bta2O7Mb5djJMnWGwC7+vrLPU1PfZBvtBBth4CT84XSDm/WL1PQTKs3xDk4I5h/EfJd0svuzU/p5RSl7FA4fnaiOuRK56wuQJmAR1rrHWfHbO07zKwj4dYgD8AggBZLdDfLJgFrKEfDtZDvEZt3vIV4Rg4TcDbTvMqxgD+zCwaoKEfWCvNn5rjmIDhlxOK7Pi72l6rRTH11fgRTSet3maxb3d1A781J6Ry52EbXjnfs+vfH33Cavyl47ptNJkpenrACaEAkzVrnb4LDM5ypJHSlsfJ9VKaTTZS7yzgGeRRmA2w4=
-  bucket: GCS Bucket
-  skip_cleanup: true
+  provider: gae
+  keyfile: client-secret.json
+  project: sam-base
 before_install:
 - openssl aes-256-cbc -K $encrypted_e88cc985fd8c_key -iv $encrypted_e88cc985fd8c_iv
   -in client-secret.json.enc -out client-secret.json -d
