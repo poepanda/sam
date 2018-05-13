@@ -11,7 +11,7 @@ const errorHandler = require('src/middlewares/errorHandler');
 const normalizePort = require('src/utils/normalizePort');
 const mustacheExpress = require('mustache-express');
 
-const port = normalizePort(process.env.NODE_PORT || 3001);
+const port = normalizePort(process.env.NODE_PORT || 8080);
 
 const app = express();
 const server = http.createServer(app);
