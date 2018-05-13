@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sam landing page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+
+    <style>
+      .where-is-sam {
+        padding: 20px;
+      }
+    </style>
+
+    <script>
+      function submitBaseUrl() {
+        document.getElementById('set-base-url').submit();
+      }
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container where-is-sam">
+      <h1>Hi! I'm Sam</h1>
+      <form id="set-base-url" action="/config/base-url" method="POST"></form>
+      {{#baseUrl}}
+        Origin binded!
+        <a href="#" onclick="javascript:submitBaseUrl()" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Rebind Origin</a>
+      {{/baseUrl}}
+      {{^baseUrl}}
+        Origin is binding...
+        <script> submitBaseUrl();</script>
+      {{/baseUrl}}
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.iife.min.js"></script>
+  </body>
+</html>

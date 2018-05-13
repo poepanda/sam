@@ -1,0 +1,50 @@
+{
+  "name": "sam",
+  "version": "1.0.0",
+  "description": "A Atlassian Connect service by Shopback",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "start:dev:debug": "DEBUG=sam:* npm run start:dev",
+    "test": "jest src",
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage",
+    "lint": "./node_modules/.bin/eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poepanda/pobot.git"
+  },
+  "keywords": [
+    "Atlassian",
+    "Addon",
+    "Shopback"
+  ],
+  "author": "Po",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/poepanda/pobot/issues"
+  },
+  "homepage": "https://github.com/poepanda/pobot#readme",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "atlassian-jwt": "^0.1.5",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "http-errors": "^1.6.3",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.1",
+    "mustache-express": "^1.2.6",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.4"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Pobot",
+    "key": "shopback-pobot",
+    "baseUrl": "https://1c9a38b5.ngrok.io",
+    "authentication": {
+        "type": "jwt"
+    },
+    "lifecycle": {
+        "installed": "/callbacks/addon-installed"
+    },
+    "scopes": [
+        "read", "write"
+    ]
+}
