@@ -14,7 +14,7 @@ nconf
       `./main${(env && env !== 'development') ? `.${env}` : ''}.json`,
     ),
   )
-  // .file('env', path.join(__dirname, './envvar.json'))
+  .file('env', path.join(__dirname, './envvar.json'))
   .file('local', path.join(__dirname, './local.json'));
 
 const storeConfig = () => {

@@ -11,6 +11,6 @@ I am [Sam](http://gameofthrones.wikia.com/wiki/Samwell_Tarly) and I'm in love wi
 ## How to run
 ```
   npm start
-  npm dev // For development with hot reloading
-  npm start:debug // Or npm run dev:debug
+  npm run dev // For development with hot reloading
+  npm run start:debug // Or npm run dev:debug
 ```

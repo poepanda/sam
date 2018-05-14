@@ -1,8 +1,9 @@
 {
   "MONGODB": {
-    "PROTOCOL": "mongodb",
-    "HOST": "mongodb://localhost",
-    "PORT": "27017",
-    "DB": "Sam"
+    "PROTOCOL": "mongodb+srv",
+    "HOST": "samdb-ggm7q.mongodb.net",
+    "DB": "Sam",
+    "USERNAME": "sam",
+    "PASSWORD": "samshopback"
   }
 }
