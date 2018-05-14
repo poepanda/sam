@@ -1,0 +1,34 @@
+{
+  "atlassian": {
+    "templates": {
+      "jiraDescriptor": {
+        "name": "Sam",
+        "key": "shopback-sam",
+        "baseUrl": "<Where_is_Sam_located",
+        "authentication": {
+          "type": "jwt"
+        },
+        "lifecycle": {
+          "installed": "/atlassian/callbacks/addon-installed"
+        },
+        "scopes": [
+          "read",
+          "write"
+        ]
+      }
+    },
+    "jira.sbexper": {
+      "key": "shopback-sam",
+      "clientKey": "43861471-4c3a-3caa-93a3-33d7a8752717",
+      "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGVuEHfQRoXW6MMDe4IHqJtN1xeoBf7jLbGGiaUqvSKq4qNGXvUXoQ9CFwpytbj4lPHgFKDVBIA3Cued09JOKLleAAxqWsBSTSmjmzmM2Anwwmnqn0JhywRJzvp7blWRU1bezaVx8owqYaGm+5rqDb9h7VJGL6+EZEMHIyrz9cMwIDAQAB",
+      "sharedSecret": "AZzPBSgQX9pgBxxgryRUfJgpcLZP3/euLFQOlY853LQlAAXMaXGO3rnrkMSYrf9SROulDBLba3xHASLW1bmKWg",
+      "serverVersion": "100085",
+      "pluginsVersion": "1.26.0",
+      "baseUrl": "https://sbexper.atlassian.net",
+      "productType": "jira",
+      "description": "Atlassian JIRA at https://sbexper.atlassian.net ",
+      "eventType": "installed"
+    }
+  },
+  "baseUrl": "https://c1519d26.ngrok.io"
+}

@@ -1,6 +1,6 @@
 const isNaN = require('lodash/isNaN');
 
-module.exports = function normalizePort(val) {
+const normalizePort = (val) => {
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -15,3 +15,5 @@ module.exports = function normalizePort(val) {
 
   return false;
 };
+
+module.exports = normalizePort;

@@ -1,0 +1,9 @@
+{
+  "MONGODB": {
+    "PROTOCOL": "mongodb+srv",
+    "HOST": "samdb-ggm7q.mongodb.net",
+    "DB": "Sam",
+    "USERNAME": "sam",
+    "PASSWORD": "samshopback"
+  }
+}

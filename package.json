@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon index.js",
-    "start:dev:debug": "DEBUG=sam:* npm run start:dev",
+    "start:debug": "DEBUG=sam:* npm start",
+    "dev": "nodemon index.js",
+    "dev:debug": "DEBUG=sam:* npm run start:dev",
     "test": "jest src",
     "coverage": "jest --collectCoverageFrom=src/**.js --coverage",
     "lint": "./node_modules/.bin/eslint ./"
@@ -26,6 +27,9 @@
     "url": "https://github.com/poepanda/pobot/issues"
   },
   "homepage": "https://github.com/poepanda/pobot#readme",
+  "nodemonConfig": {
+    "delay": 500
+  },
   "dependencies": {
     "app-module-path": "^2.2.0",
     "atlassian-jwt": "^0.1.5",
@@ -36,7 +40,9 @@
     "http-errors": "^1.6.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
+    "mongodb": "^3.1.0-beta4",
     "mustache-express": "^1.2.6",
+    "nconf": "^0.10.0",
     "request": "^2.85.0"
   },
   "devDependencies": {

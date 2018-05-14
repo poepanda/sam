@@ -1,0 +1,8 @@
+{
+  "MONGODB": {
+    "PROTOCOL": "mongodb",
+    "HOST": "mongodb://localhost",
+    "PORT": "27017",
+    "DB": "Sam"
+  }
+}

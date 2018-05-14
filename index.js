@@ -3,13 +3,14 @@ const http = require('http');
 const path = require('path');
 const debug = require('debug')('sam:server');
 const error = require('http-errors');
+const mustacheExpress = require('mustache-express');
 
 require('app-module-path').addPath(__dirname);
 
 const router = require('src/router');
 const errorHandler = require('src/middlewares/errorHandler');
 const normalizePort = require('src/utils/normalizePort');
-const mustacheExpress = require('mustache-express');
+const { migrateConfig } = require('src/db/configuration.db');
 
 const port = normalizePort(process.env.NODE_PORT || 8080);
 
@@ -26,6 +27,8 @@ app.set('views', path.join(__dirname, './src/modules/landing/views'));
 
 app.use('/', router);
 app.use(errorHandler);
+
+migrateConfig();
 
 server.listen(port);
 

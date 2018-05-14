@@ -10,6 +10,7 @@ I am [Sam](http://gameofthrones.wikia.com/wiki/Samwell_Tarly) and I'm in love wi
 
 ## How to run
 ```
-  npm start:dev // or start:dev:debug with debug logs
   npm start
+  npm dev // For development with hot reloading
+  npm start:debug // Or npm run dev:debug
 ```

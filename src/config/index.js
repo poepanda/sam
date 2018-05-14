@@ -1,28 +1,31 @@
-const fs = require('fs');
 const path = require('path');
+// const debug = require('debug')('sam:config');
+const nconf = require('nconf');
 
-const env = process.env.NODE_ENV;
-const configFile = path.join(__dirname, env ? `${env}.config.json` : 'config.json');
+const env = nconf.get('NODE_ENV');
 
-let config = {};
+nconf
+  // .argv()
+  .env()
+  .file(
+    'main',
+    path.join(
+      __dirname,
+      `./main${(env && env !== 'development') ? `.${env}` : ''}.json`,
+    ),
+  )
+  // .file('env', path.join(__dirname, './envvar.json'))
+  .file('local', path.join(__dirname, './local.json'));
 
-function storeConfig() {
-  fs.writeFileSync(configFile, JSON.stringify(config, null, 2));
-}
-
-fs.exists(configFile, (exists) => {
-  if (exists) {
-    const jsonConfig = fs.readFileSync(configFile);
-    config = JSON.parse(jsonConfig || {});
-  } else {
-    storeConfig();
-  }
-});
+const storeConfig = () => {
+  nconf.save();
+};
 
 module.exports = {
   setConfig: (key, value) => {
-    config[key] = value;
+    nconf.set(key, value);
     storeConfig();
   },
-  getConfig: key => config[key],
+  getConfig: key => nconf.get(key),
+  setDefaultConfig: config => nconf.defaults(config),
 };

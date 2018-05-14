@@ -6,15 +6,23 @@ const Promise = require('bluebird');
 
 const { getConfig } = require('src/config');
 
-module.exports = function jiraComment({ baseUrl, ticketId, body }) {
-  return new Promise((resolve, reject) => {
-    if (!baseUrl || !ticketId || !body) {
+/**
+ * To post a comment to Atlassian - Jira ticket
+ * @Request - POST
+ * data
+ * - baseUrl: the jira Url of your project
+ * - ticketId: ID of target ticket
+ * - body: Content of the comment
+ */
+const jiraComment = ({ atlassianId, ticketId, body }) => (
+  new Promise((resolve, reject) => {
+    if (!atlassianId || !ticketId || !body) {
       reject(new Error({ message: 'Missing required field!' }));
     }
 
     const now = moment().utc();
     const commentPath = `/rest/api/2/issue/${ticketId}/comment`;
-    const jiraConfig = getConfig(baseUrl);
+    const jiraConfig = getConfig(`atlassian:jira.${atlassianId}`);
 
     // Used by [Query String Hash](https://developer.atlassian.com/cloud/jira/platform/understanding-jwt/#a-name-qsh-a-creating-a-query-string-hash)
     const requestForHash = {
@@ -32,7 +40,7 @@ module.exports = function jiraComment({ baseUrl, ticketId, body }) {
     const token = jwt.encode(claims, jiraConfig.sharedSecret);
 
     request.post({
-      url: `${baseUrl}${commentPath}`,
+      url: `${jiraConfig.baseUrl}${commentPath}`,
       headers: {
         Accept: 'application/json',
         Authorization: `JWT ${token}`,
@@ -46,5 +54,7 @@ module.exports = function jiraComment({ baseUrl, ticketId, body }) {
         resolve(data);
       }
     });
-  });
-};
+  })
+);
+
+module.exports = jiraComment;

@@ -33,12 +33,11 @@
       <form id="set-base-url" action="/config/base-url" method="POST"></form>
       {{#baseUrl}}
         Origin binded!
-        <a href="#" onclick="javascript:submitBaseUrl()" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Rebind Origin</a>
       {{/baseUrl}}
       {{^baseUrl}}
-        Origin is binding...
-        <script> submitBaseUrl();</script>
+        There is no origin binded! Please click the button to bind it.
       {{/baseUrl}}
+      <a href="#" onclick="javascript:submitBaseUrl()" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Rebind Origin</a>
     </div>
 
 

@@ -9,7 +9,7 @@ const commentBuildNotice = (req, res, next) => {
       res.send('Commented!');
     })
     .catch((err) => {
-      debug(err);
+      debug('Error: ', JSON.stringify(err, null, 2));
       next(err);
     });
 };
