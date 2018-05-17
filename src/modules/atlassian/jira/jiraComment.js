@@ -1,7 +1,7 @@
 const jwt = require('atlassian-jwt');
 const moment = require('moment');
 const request = require('request');
-// const debug = require('debug')('sam:jira');
+const debug = require('debug')('sam:jira');
 const Promise = require('bluebird');
 
 const { getConfig } = require('src/config');
@@ -10,7 +10,7 @@ const { getConfig } = require('src/config');
  * To post a comment to Atlassian - Jira ticket
  * @Request - POST
  * data
- * - baseUrl: the jira Url of your project
+ * - atlassianId: the jira Url of your project
  * - ticketId: ID of target ticket
  * - body: Content of the comment
  */
@@ -29,6 +29,7 @@ const jiraComment = ({ atlassianId, ticketId, body }) => (
       method: 'POST',
       originalUrl: commentPath,
     };
+    debug('using config: ', jiraConfig);
 
     const claims = {
       iss: jiraConfig.key,
@@ -38,6 +39,7 @@ const jiraComment = ({ atlassianId, ticketId, body }) => (
     };
 
     const token = jwt.encode(claims, jiraConfig.sharedSecret);
+    debug('token: ', token);
 
     request.post({
       url: `${jiraConfig.baseUrl}${commentPath}`,
@@ -48,6 +50,15 @@ const jiraComment = ({ atlassianId, ticketId, body }) => (
       body: { body },
       json: true,
     }, (err, response, data) => {
+      const { statusCode, statusMessage } = response;
+      debug('Response summary: ', statusCode, statusMessage);
+
+      if (statusCode !== 200) {
+        reject(new Error({
+          message: JSON.stringify({ statusCode, statusMessage }),
+        }));
+      }
+
       if (err) {
         reject(err);
       } else {

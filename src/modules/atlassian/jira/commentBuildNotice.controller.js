@@ -5,7 +5,7 @@ const commentBuildNotice = (req, res, next) => {
   const comment = jiraComment(req.body);
   comment
     .then((data) => {
-      debug(data);
+      // debug(data);
       res.send('Commented!');
     })
     .catch((err) => {
