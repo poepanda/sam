@@ -4,6 +4,6 @@ const router = express.Router();
 
 const addonInstalled = require('./addonInstalled.controller');
 
-router.use('/addon-installed', addonInstalled);
+router.post('/addon-installed', addonInstalled);
 
-module.exports = addonInstalled;
+module.exports = router;

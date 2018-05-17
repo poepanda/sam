@@ -8,6 +8,7 @@ const mustacheExpress = require('mustache-express');
 require('app-module-path').addPath(__dirname);
 
 const router = require('src/router');
+const endpointsList = require('src/modules/others/endpointsList');
 const errorHandler = require('src/middlewares/errorHandler');
 const normalizePort = require('src/utils/normalizePort');
 const { migrateConfig } = require('src/db/configuration.db');
@@ -25,6 +26,7 @@ app.engine('html', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', path.join(__dirname, './src/modules/landing/views'));
 
+app.get('/endpoints', endpointsList);
 app.use('/', router);
 app.use(errorHandler);
 
@@ -35,6 +37,7 @@ server.listen(port);
 server.on('listening', () => {
   debug(`The app is ready on port ${port}`);
 });
+
 
 server.on('error', () => {
   if (error.syscall !== 'listen') {

@@ -4,6 +4,6 @@ const router = express.Router();
 
 const baseUrl = require('./baseUrl.controller');
 
-router.use('/base-url', baseUrl);
+router.get('/base-url', baseUrl);
 
 module.exports = router;
